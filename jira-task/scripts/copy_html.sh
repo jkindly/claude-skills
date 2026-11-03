@@ -36,7 +36,8 @@ function run(argv) {
 
   // Jira's editor merges the first pasted block into the paragraph under the cursor,
   // which unwraps the first panel. A leading empty paragraph takes that hit instead.
-  const wrapped = '<meta charset="utf-8"><p><br></p>' + html;
+  const lead = /^\s*<p><br><\/p>/.test(html) ? '' : '<p><br></p>';
+  const wrapped = '<meta charset="utf-8">' + lead + html;
   const pb = $.NSPasteboard.generalPasteboard;
   pb.clearContents;
   pb.setStringForType($(wrapped), $.NSPasteboardTypeHTML);

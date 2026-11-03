@@ -44,12 +44,15 @@ Kontekst Techniczny
 2. Zapisz opis jako HTML do pliku tymczasowego (scratchpad albo `/tmp/jira-task.html`), dokładnie w tej strukturze:
 
 ```html
+<p><br></p>
 <div data-panel-type="info"><p><strong>Opis</strong></p><p>Zdanie kontekstu.</p><ul><li>Komunikat <code>Dostawa: …</code> pokazuje złą datę</li></ul></div>
 <div data-panel-type="note"><p><strong>Kryteria Akceptacji</strong></p><ul><li>Kryterium<ul><li>scenariusz</li></ul></li></ul></div>
 <div data-panel-type="warning"><p><strong>Kontekst Techniczny</strong></p><ul><li><code>Plik.php</code>: co tam zmienić</li></ul></div>
 ```
 
    Typy paneli Jiry odpowiadają kolorom: `info` = niebieski #deebff, `note` = fioletowy #eae6ff, `warning` = żółty #fffae6. Edytor Jiry rozpoznaje `data-panel-type` przy wklejaniu i tworzy z tego Info panel. Escapuj `<`, `>`, `&` w treści.
+
+   Pusty akapit `<p><br></p>` na początku jest potrzebny: edytor Jiry przy wklejaniu łączy pierwszy blok z akapitem pod kursorem, więc bez niego panel "Opis" rozpada się na zwykły tekst. Dzięki temu działa też kopiowanie z pliku otwartego w przeglądarce (Cmd+A, Cmd+C).
 
 3. Skopiuj do schowka:
 
